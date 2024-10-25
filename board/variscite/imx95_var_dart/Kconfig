@@ -9,6 +9,4 @@ config SYS_VENDOR
 config SYS_CONFIG_NAME
 	default "imx95_var_dart"
 
-source "board/variscite/common/Kconfig"
-
 endif
