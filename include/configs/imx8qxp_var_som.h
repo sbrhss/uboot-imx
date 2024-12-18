@@ -36,7 +36,7 @@
 
 #endif
 
-#define CONFIG_CMD_READ
+// #define CONFIG_CMD_READ
 
 /* Flat Device Tree Definitions */
 
@@ -69,34 +69,34 @@
 	"initrd_block=10000\0" \
 	"initrd_size=8000\0" \
 	"loadimage_swu=" \
-		"mmc read ${img_addr} ${kernel_block} ${kernel_size};" \
-		"unzip ${img_addr} ${loadaddr};" \
+	"mmc read ${img_addr} ${kernel_block} ${kernel_size};" \
+	"unzip ${img_addr} ${loadaddr};" \
 	"\0" \
 	"loadfdt_swu=mmc read ${fdt_addr} ${fdt_block} ${fdt_size};\0" \
 	"loadinitrd_swu=mmc read ${initrd_addr} ${initrd_block} ${initrd_size};\0" \
 	"altbootcmd=" \
-		"mmc dev ${mmcdev};" \
-		"run uargs;" \
-	  "run loadimage_swu;" \
-		"run loadfdt_swu;" \ 
-		"run loadinitrd_swu;" \
-		"booti ${loadaddr} ${initrd_addr} ${fdt_addr}" \
+	"mmc dev ${mmcdev};" \
+	"run uargs;" \
+	"run loadimage_swu;" \
+	"run loadfdt_swu;" \
+	"run loadinitrd_swu;" \
+	"booti ${loadaddr} ${initrd_addr} ${fdt_addr}" \
 	"\0"
 
 /* Initial environment variables */
-#define CONFIG_EXTRA_ENV_SETTINGS		\
+#define CONFIG_EXTRA_ENV_SETTINGS \
 	CONFIG_MFG_ENV_SETTINGS \
 	M4_BOOT_ENV \
 	AHAB_ENV \
-    ALTBOOTCMD_ENV \
-	"bootdir=/boot\0"	\
+    	ALTBOOTCMD_ENV \
+	"bootdir=/boot\0" \
 	"script=boot.scr\0" \
 	"image=Image.gz\0" \
 	"console=ttyLP3\0" \
-	"img_addr=0x82000000\0"			\
-	"fdt_addr=0x83000000\0"			\
-	"fdt_high=0xffffffffffffffff\0"		\
-	"cntr_addr=0x98000000\0"			\
+	"img_addr=0x82000000\0"	\
+	"fdt_addr=0x83000000\0"	\
+	"fdt_high=0xffffffffffffffff\0"	\
+	"cntr_addr=0x98000000\0" \
 	"cntr_file=os_cntr_signed.bin\0" \
 	"boot_fdt=try\0" \
 	"fdt_file=imx8qxp-var-som-symphony.dtb\0" \
@@ -109,16 +109,16 @@
 	"use_m4=no\0" \
 	"loadm4bin=load mmc ${mmcdev}:${mmcpart} ${m4_addr} ${bootdir}/${m4_bin}\0" \
 	"runm4bin=" \
-		"dcache flush;" \
-		"bootaux ${m4_addr};\0" \
+	"dcache flush;" \
+	"bootaux ${m4_addr};\0" \
 	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
 	"mmcargs=setenv bootargs console=${console},${baudrate} earlycon " \
-		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootfstype=ext4 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
+	"root=/dev/mmcblk${mmcblk}p${mmcpart} rootfstype=ext4 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
 	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${script};\0" \
 	"bootscript=echo Running bootscript from mmc ...; " \
-		"source\0" \
+	"source\0" \
 	"loadimage=load mmc ${mmcdev}:${mmcpart} ${img_addr} ${bootdir}/${image};" \
-		  "unzip ${img_addr} ${loadaddr}\0" \
+	"unzip ${img_addr} ${loadaddr}\0" \
 	"loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${bootdir}/${fdt_file}\0" \
 	"ramsize_check="\
 		"if test $sdram_size -le 1024; then " \
@@ -183,7 +183,7 @@
 	"splashfile=/boot/splash.bmp\0" \
 	"splashimage=0x9e000000\0" \
 	"splashenable=setenv splashfile ${bootdir}/splash.bmp; " \
-		"setenv splashimage 0x83100000\0" \
+	"setenv splashimage 0x83100000\0" \
 	"splashdisable=setenv splashfile; setenv splashimage\0"
 
 /* Link Definitions */
@@ -219,10 +219,10 @@
 
 /* Monitor Command Prompt */
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
-#define CONFIG_SYS_CBSIZE		2048
+//#define CONFIG_SYS_CBSIZE		2048
 #define CONFIG_SYS_MAXARGS		64
 #define CONFIG_SYS_BARGSIZE		CONFIG_SYS_CBSIZE
-#define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + sizeof(CONFIG_SYS_PROMPT) + 16)
+//#define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + sizeof(CONFIG_SYS_PROMPT) + 16)
 
 /* Generic Timer Definitions */
 #define COUNTER_FREQUENCY		8000000	/* 8MHz */
